@@ -25,4 +25,10 @@ public class ConstructorController {
     ResponseEntity<Constructor> findConstructor(@PathVariable("id") Long id) {
         return ResponseEntity.ok(constructorService.findByIdConstructor(id));
     }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public void deleteConstructor(@PathVariable("id") Long id){
+        constructorService.deleteByIdConstructor(id);
+    }
+
 }
