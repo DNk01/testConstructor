@@ -23,4 +23,6 @@ public class ConstructorService {
     public Constructor findByIdConstructor(Long id){
         return constructorRepository.findById(id).get();
     }
+
+    public void deleteByIdConstructor(Long id) { constructorRepository.deleteById(id); }
 }
