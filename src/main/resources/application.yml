@@ -14,3 +14,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+
+  liquibase:
+    enabled: true
+    change-log: classpath:migration.xml

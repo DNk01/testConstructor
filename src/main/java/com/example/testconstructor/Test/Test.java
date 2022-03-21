@@ -1,4 +1,4 @@
-package com.example.testconstructor.entities;
+package com.example.testconstructor.Test;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "constructors")
-public class Constructor {
+@Table(name = "test")
+public class Test {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     Long id;
     @Column(name = "name")
     String name;
