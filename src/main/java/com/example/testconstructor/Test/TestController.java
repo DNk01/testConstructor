@@ -35,4 +35,11 @@ public class TestController {
     public List<Test> getAllTests() {
         return testService.findAllTests();
     }
+
+    @PutMapping("/{id}")
+    public Test updateTest(@PathVariable("id") Long id, String name, int questionsAmount){
+        return testService.updateTest(id, name, questionsAmount);
+    }
+
+
 }

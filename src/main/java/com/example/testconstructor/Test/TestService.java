@@ -30,4 +30,12 @@ public class TestService {
     public List<Test> findAllTests() {
         return testRepository.findAll();
     }
+
+    public Test updateTest(Long id, String name, int questionsAmount) {
+        Test test = new Test();
+        test.setId(id);
+        test.setName(name);
+        test.setQuestionsAmount(questionsAmount);
+        return testRepository.save(test);
+    }
 }

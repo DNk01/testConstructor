@@ -15,9 +15,9 @@ public class TestServiceTest{
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        Test test = new Test(1L, "name");
-        Test test2 = new Test(2L, "name");
-        Test test3 = new Test(3L, "name");
+        Test test = new Test(1L, "name", 3);
+        Test test2 = new Test(2L, "name", 4);
+        Test test3 = new Test(3L, "name", 5);
 
         //createTest test
         assertThat(testService.createTest(test)).isEqualTo(test);
@@ -33,5 +33,9 @@ public class TestServiceTest{
         //deleteTestById test
         testService.deleteTestById(1L);
         assertThat(testService.findAllTests().size()).isEqualTo(2);
+
+        //updateTest test
+        testService.updateTest(2L, "name",10);
+        assertThat(testService.findTestById(2l).getQuestionsAmount()).isEqualTo(10);
     }
 }

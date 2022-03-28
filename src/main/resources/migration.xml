@@ -14,4 +14,17 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="TestService-2" author="VolfDaim">
+        <addColumn tableName="tests">
+            <column name="questionsAmount" type="integer"></column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="UpdateTestService-2" author="VolfDaim">
+        <sql>
+            UPDATE tests SET questionsAmount = 0;
+        </sql>
+        <rollback>
+            UPDATE tests SET questionsAmount = 0;
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
