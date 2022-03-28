@@ -17,4 +17,6 @@ public class Test {
     Long id;
     @Column(name = "name")
     String name;
+    @Column(name="questionsAmount")
+    int questionsAmount;
 }
