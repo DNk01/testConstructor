@@ -1,5 +1,7 @@
 package com.example.testconstructor.constructors;
 
+import com.example.testconstructor.Question.Question;
+import com.example.testconstructor.Question.QuestionService;
 import com.example.testconstructor.Test.Test;
 import com.example.testconstructor.Test.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,18 +10,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-public class TestServiceTest{
+public class TestServiceTest {
 
     @Autowired
     private TestService testService;
+    private QuestionService questionService;
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
+        //Question q1 = new Question(1L, 1L, "q1");
+        //Question q2 = new Question(2L, 2L, "q2");
+        //Question q3 = new Question(3L, 3L, "q3");
+
         Test test = new Test(1L, "name", 3);
         Test test2 = new Test(2L, "name", 4);
         Test test3 = new Test(3L, "name", 5);
 
-        //createTest test
+        //createTest test   
         assertThat(testService.createTest(test)).isEqualTo(test);
 
         //findTestById test
@@ -35,7 +42,29 @@ public class TestServiceTest{
         assertThat(testService.findAllTests().size()).isEqualTo(2);
 
         //updateTest test
-        testService.updateTest(2L, "name",10);
+        testService.updateTest(2L, "name", 10);
         assertThat(testService.findTestById(2l).getQuestionsAmount()).isEqualTo(10);
+
+/*
+        //createQuestion test
+        assertThat(questionService.createQuestion(q1)).isEqualTo(q1);
+
+        //findQuestionById test
+        assertThat(questionService.findQuestionById(1L)).isEqualTo(q1);
+
+        //findAllQuestions test
+        assertThat(questionService.findAllQuestions().size()).isEqualTo(3);
+
+        //deleteQuestionById test
+        questionService.deleteQuestionById(1L);
+        assertThat(questionService.findAllQuestions().size()).isEqualTo(2);
+
+        //updateQuestion test
+        questionService.updateQuestion(2L, 3L, "new_q2");
+        assertThat(questionService.findQuestionById(2l).getQuestion_name()).isEqualTo("new_q2");
+
+        //getTestByQuestionId test
+        assertThat(questionService.getTestByQuestionId(2L)).isEqualTo(3L);
+*/
     }
 }

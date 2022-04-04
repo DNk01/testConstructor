@@ -1,10 +1,12 @@
 package com.example.testconstructor.Test;
 
+import com.example.testconstructor.Question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/tests")
@@ -37,9 +39,8 @@ public class TestController {
     }
 
     @PutMapping("/{id}")
-    public Test updateTest(@PathVariable("id") Long id, String name, int questionsAmount){
+    public Test updateTest(@PathVariable("id") Long id, String name, int questionsAmount, Set<Question> questions) {
         return testService.updateTest(id, name, questionsAmount);
     }
-
 
 }

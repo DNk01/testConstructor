@@ -27,4 +27,17 @@
             UPDATE tests SET questionsAmount = 0;
         </rollback>
     </changeSet>
+    <changeSet id="QuestionService-1" author="VolfDaim">
+        <createTable tableName="question">
+            <column name="question_id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="test_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

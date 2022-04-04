@@ -1,10 +1,13 @@
 package com.example.testconstructor.Test;
 
+import com.example.testconstructor.Question.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -13,10 +16,13 @@ import javax.persistence.*;
 @Table(name = "test")
 public class Test {
     @Id
-    @Column(name = "id")
+    @Column(name = "test_id")
     Long id;
-    @Column(name = "name")
+
+    @Column(name = "test_name")
     String name;
-    @Column(name="questionsAmount")
+
+    @Column(name = "questions_amount")
     int questionsAmount;
+
 }
