@@ -2,19 +2,18 @@ package com.example.testconstructor.Question;
 
 import com.example.testconstructor.Test.Test;
 import com.example.testconstructor.Test.TestRepository;
-import com.example.testconstructor.Test.TestService;
 import org.springframework.stereotype.Service;
 
-import javax.management.QueryEval;
 import java.util.List;
 
 @Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
-    private TestRepository testRepository;
+    private final TestRepository testRepository;
 
-    public QuestionService(QuestionRepository questionRepository) {
+    public QuestionService(QuestionRepository questionRepository, TestRepository testRepository) {
         this.questionRepository = questionRepository;
+        this.testRepository = testRepository;
     }
 
     public Question createQuestion(Question question) {
@@ -42,7 +41,8 @@ public class QuestionService {
     }
 
     public Test getTestByQuestionId(Long id) {
-        Long test_id = questionRepository.getById(id).getTest_id();
-        return testRepository.getById(test_id);
+        Question question = questionRepository.findById(id).get();
+        Long test_id = question.getTest_id();
+        return testRepository.findById(test_id).get();
     }
 }

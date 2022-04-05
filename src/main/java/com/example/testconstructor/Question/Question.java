@@ -1,6 +1,5 @@
 package com.example.testconstructor.Question;
 
-import com.example.testconstructor.Test.Test;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

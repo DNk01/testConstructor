@@ -12,8 +12,9 @@ public class AnswerService {
     private final AnswerRepository answerRepository;
     private QuestionRepository questionRepository;
 
-    public AnswerService(AnswerRepository answerRepository) {
+    public AnswerService(AnswerRepository answerRepository, QuestionRepository questionRepository) {
         this.answerRepository = answerRepository;
+        this.questionRepository = questionRepository;
     }
 
     public Answer createAnswer(Answer question) {
@@ -35,7 +36,8 @@ public class AnswerService {
     }
 
     public Question getQuestionByAnswerId(Long id){
-        Long question_id = answerRepository.getById(id).getQuestion_id();
+
+        Long question_id = answerRepository.findById(id).get().getQuestion_id();
         return questionRepository.getById(question_id);
     }
 }

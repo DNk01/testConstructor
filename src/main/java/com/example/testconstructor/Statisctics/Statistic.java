@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -16,10 +17,14 @@ import java.util.UUID;
 @Table(name = "statistic")
 public class Statistic {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="statistic_id")
-    UUID statistic_id;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name="statistic_id", updatable = false, nullable = false)
+    private UUID statistic_id;
 
     @Column(name = "user_id")
     Long user_id;

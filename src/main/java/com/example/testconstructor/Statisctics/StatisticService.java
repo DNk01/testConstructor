@@ -1,7 +1,5 @@
 package com.example.testconstructor.Statisctics;
 
-import com.example.testconstructor.Question.Question;
-import com.example.testconstructor.Question.QuestionRepository;
 import com.example.testconstructor.Test.Test;
 import com.example.testconstructor.Test.TestRepository;
 import com.example.testconstructor.Users.User;
@@ -17,8 +15,10 @@ public class StatisticService {
     private UserRepository userRepository;
     private TestRepository testRepository;
 
-    public StatisticService(StatisticRepository statisticRepository) {
+    public StatisticService(StatisticRepository statisticRepository, UserRepository userRepository, TestRepository testRepository) {
         this.statisticRepository = statisticRepository;
+        this.userRepository = userRepository;
+        this.testRepository = testRepository;
     }
 
     public Statistic createStatistic(Statistic statistic) {
@@ -37,12 +37,12 @@ public class StatisticService {
         return statisticRepository.findAll();
     }
 
-    public Statistic updateStatistic(UUID statistic_id, Long user_id, Long test_id, Integer right_questions_amount) {
+    public Statistic updateStatistic(UUID id, Long user_id, Long test_id, Integer right_questions_amount) {
         Statistic statistic = new Statistic();
-        statistic.statistic_id = statistic_id;
-        statistic.user_id = user_id;
-        statistic.test_id = test_id;
-        statistic.right_answers_amount = right_questions_amount;
+        statistic.setStatistic_id(id);
+        statistic.setUser_id(user_id);
+        statistic.setTest_id(test_id);
+        statistic.setRight_answers_amount(right_questions_amount);
         return statisticRepository.save(statistic);
     }
 
