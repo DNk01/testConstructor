@@ -40,4 +40,17 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="AnswerService-1" author="VolfDaim">
+        <createTable tableName="answer">
+            <column name="answer_id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="question_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -39,7 +39,7 @@ public class TestController {
     }
 
     @PutMapping("/{id}")
-    public Test updateTest(@PathVariable("id") Long id, String name, int questionsAmount, Set<Question> questions) {
+    public Test updateTest(@PathVariable("id") Long id, String name, int questionsAmount) {
         return testService.updateTest(id, name, questionsAmount);
     }
 
