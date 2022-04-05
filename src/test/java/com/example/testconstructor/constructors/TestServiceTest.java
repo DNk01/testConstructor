@@ -18,10 +18,6 @@ public class TestServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        //Question q1 = new Question(1L, 1L, "q1");
-        //Question q2 = new Question(2L, 2L, "q2");
-        //Question q3 = new Question(3L, 3L, "q3");
-
         Test test = new Test(1L, "name", 3);
         Test test2 = new Test(2L, "name", 4);
         Test test3 = new Test(3L, "name", 5);
