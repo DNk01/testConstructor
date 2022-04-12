@@ -39,8 +39,8 @@ public class QuestionController {
     }
 
     @PutMapping("/{id}")
-    public Question updateQuestion(@PathVariable("id") Long id, Long test_id, String question_name) {
-        return questionService.updateQuestion(id, test_id, question_name);
+    public Question updateQuestion(@PathVariable("id") Long id, Long testId, String questionName) {
+        return questionService.updateQuestion(id, testId, questionName);
     }
 
     @GetMapping("{id}/test")

@@ -21,23 +21,29 @@ public class AnswerService {
         return answerRepository.save(question);
     }
 
-    public Answer findAnswerById(Long id) { return answerRepository.findById(id).get(); }
+    public Answer findAnswerById(Long id) {
+        return answerRepository.findById(id).get();
+    }
 
-    public void deleteAnswerById(Long id) { answerRepository.deleteById(id); }
+    public void deleteAnswerById(Long id) {
+        answerRepository.deleteById(id);
+    }
 
-    public List<Answer> findAllAnswers() { return answerRepository.findAll(); }
+    public List<Answer> findAllAnswers() {
+        return answerRepository.findAll();
+    }
 
-    public Answer updateAnswer(Long id, Long question_id, String answer_name) {
+    public Answer updateAnswer(Long id, Long questionId, String answerName) {
         Answer answer = new Answer();
-        answer.answer_id=id;
-        answer.question_id=question_id;
-        answer.answer_name=answer_name;
+        answer.setAnswerId(id);
+        answer.setQuestionId(questionId);
+        answer.setAnswerName(answerName);
         return answerRepository.save(answer);
     }
 
-    public Question getQuestionByAnswerId(Long id){
+    public Question getQuestionByAnswerId(Long id) {
 
-        Long question_id = answerRepository.findById(id).get().getQuestion_id();
+        Long question_id = answerRepository.findById(id).get().getQuestionId();
         return questionRepository.getById(question_id);
     }
 }

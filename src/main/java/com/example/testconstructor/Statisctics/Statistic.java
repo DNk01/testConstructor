@@ -17,14 +17,8 @@ import java.util.UUID;
 @Table(name = "statistic")
 public class Statistic {
     @Id
-    @Type(type="org.hibernate.type.UUIDCharType")
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name="statistic_id", updatable = false, nullable = false)
-    private UUID statistic_id;
+    @Column(name = "statistic_id", updatable = false, nullable = false)
+    private Long statistic_id;
 
     @Column(name = "user_id")
     Long user_id;
@@ -32,6 +26,6 @@ public class Statistic {
     @Column(name = "test_id")
     Long test_id;
 
-    @Column(name="right_answers_amount")
+    @Column(name = "right_answers_amount")
     Integer right_answers_amount;
 }

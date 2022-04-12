@@ -53,4 +53,20 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="UrlService" author="VolfDaim">
+        <createTable tableName="url">
+            <column name="url_id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="test_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="StatisticService-2" author="VolfDaim">
+        <modifyDataType tableName="statistic" columnName="statistic_id" newDataType="bigint"/>
+    </changeSet>
 </databaseChangeLog>

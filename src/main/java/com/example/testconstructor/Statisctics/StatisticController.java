@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/statistics")
@@ -25,12 +24,12 @@ public class StatisticController {
     }
 
     @GetMapping("{id}")
-    ResponseEntity<Statistic> findStatistic(@PathVariable("id") UUID id) {
+    ResponseEntity<Statistic> findStatistic(@PathVariable("id") Long id) {
         return ResponseEntity.ok(statisticService.findStatisticById(id));
     }
 
     @DeleteMapping("{id}")
-    public void deleteStatistic(@PathVariable("id") UUID id) {
+    public void deleteStatistic(@PathVariable("id") Long id) {
         statisticService.deleteStatisticById(id);
     }
 
@@ -40,17 +39,17 @@ public class StatisticController {
     }
 
     @PutMapping("/{id}")
-    public Statistic updateStatistic(@PathVariable("id") UUID statistic_id, Long user_id, Long test_id, Integer right_questions_amount) {
+    public Statistic updateStatistic(@PathVariable("id") Long statistic_id, Long user_id, Long test_id, Integer right_questions_amount) {
         return statisticService.updateStatistic(statistic_id, user_id, test_id, right_questions_amount);
     }
 
     @GetMapping("{id}/user")
-    public User getUserByStatisticId(@PathVariable("id") UUID id) {
+    public User getUserByStatisticId(@PathVariable("id") Long id) {
         return statisticService.getUserByStatisticId(id);
     }
 
     @GetMapping("{id}/test")
-    public Test getTestByStatisticId(@PathVariable("id") UUID id) {
+    public Test getTestByStatisticId(@PathVariable("id") Long id) {
         return statisticService.getTestByStatisticId(id);
     }
 

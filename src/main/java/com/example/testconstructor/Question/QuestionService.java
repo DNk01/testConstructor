@@ -32,17 +32,17 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
-    public Question updateQuestion(Long id, Long test_id, String question_name) {
+    public Question updateQuestion(Long id, Long testId, String questionName) {
         Question question = new Question();
-        question.question_id = id;
-        question.test_id = test_id;
-        question.question_name = question_name;
+        question.setQuestionId(id);
+        question.setTestId(testId);
+        question.setQuestionName(questionName);
         return questionRepository.save(question);
     }
 
     public Test getTestByQuestionId(Long id) {
         Question question = questionRepository.findById(id).get();
-        Long test_id = question.getTest_id();
+        Long test_id = question.getTestId();
         return testRepository.findById(test_id).get();
     }
 }
