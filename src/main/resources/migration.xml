@@ -21,7 +21,8 @@
     </changeSet>
     <changeSet id="UpdateTestService-2" author="VolfDaim">
         <sql>
-            UPDATE tests SET questionsAmount = 0;
+            UPDATE tests
+            SET questionsAmount = 0;
         </sql>
         <rollback>
             UPDATE tests SET questionsAmount = 0;
@@ -68,5 +69,25 @@
     </changeSet>
     <changeSet id="StatisticService-2" author="VolfDaim">
         <modifyDataType tableName="statistic" columnName="statistic_id" newDataType="bigint"/>
+    </changeSet>
+    <changeSet id="foreignKeyTestQuestion" author="VolfDaim">
+        <addForeignKeyConstraint baseTableName="test" baseColumnNames="test_id"
+                                 constraintName="test_question_test_id_question_id"
+                                 referencedTableName="question"
+                                 referencedColumnNames="question_id"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+    <changeSet id="foreignKeyQuestionAnswer" author="VolfDaim">
+        <addForeignKeyConstraint baseTableName="question" baseColumnNames="question_id"
+                                 constraintName="question_answer_question_id_answer_id"
+                                 referencedTableName="answer"
+                                 referencedColumnNames="answer_id"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+    <changeSet id="foreignKeyUserStatistic" author="VolfDaim">
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="user_id"
+                                 constraintName="user_statistic_user_id_statistic_id" referencedTableName="statistic"
+                                 referencedColumnNames="statistic_id"
+                                 onUpdate="CASCADE"/>
     </changeSet>
 </databaseChangeLog>
