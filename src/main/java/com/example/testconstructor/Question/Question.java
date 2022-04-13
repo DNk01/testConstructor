@@ -14,12 +14,12 @@ import javax.persistence.*;
 public class Question {
     @Id
     @Column(name = "question_id")
-    Long question_id;
+    Long questionId;
 
     @Column(name = "test_id")
-    Long test_id;
+    Long testId;
 
     @Column(name = "question_name")
-    String question_name;
+    String questionName;
 
 }

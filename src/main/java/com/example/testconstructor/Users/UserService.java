@@ -11,9 +11,11 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository){ this.userRepository=userRepository;}
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    public User createUser(User user){
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
@@ -29,11 +31,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUser(Long id, String user_name, String user_surname) {
+    public User updateUser(Long id, String userName, String userSurname) {
         User user = new User();
-        user.setUser_id(id);
-        user.setUser_name(user_name);
-        user.setUser_surname(user_surname);
+        user.setUserId(id);
+        user.setUserName(userName);
+        user.setUserSurname(userSurname);
         return userRepository.save(user);
     }
 }

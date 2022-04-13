@@ -17,11 +17,11 @@ import javax.persistence.Table;
 public class User {
     @Id
     @Column(name = "user_id", nullable = false)
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "user_name")
-    String user_name;
+    String userName;
 
     @Column(name = "user_surname")
-    String user_surname;
+    String userSurname;
 }

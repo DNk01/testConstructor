@@ -7,7 +7,6 @@ import com.example.testconstructor.Users.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class StatisticService {
@@ -25,11 +24,11 @@ public class StatisticService {
         return statisticRepository.save(statistic);
     }
 
-    public Statistic findStatisticById(UUID id) {
+    public Statistic findStatisticById(Long id) {
         return statisticRepository.findById(id).get();
     }
 
-    public void deleteStatisticById(UUID id) {
+    public void deleteStatisticById(Long id) {
         statisticRepository.deleteById(id);
     }
 
@@ -37,22 +36,22 @@ public class StatisticService {
         return statisticRepository.findAll();
     }
 
-    public Statistic updateStatistic(UUID id, Long user_id, Long test_id, Integer right_questions_amount) {
+    public Statistic updateStatistic(Long id, Long userId, Long testId, Integer rightQuestionAmount) {
         Statistic statistic = new Statistic();
         statistic.setStatistic_id(id);
-        statistic.setUser_id(user_id);
-        statistic.setTest_id(test_id);
-        statistic.setRight_answers_amount(right_questions_amount);
+        statistic.setUser_id(userId);
+        statistic.setTest_id(testId);
+        statistic.setRight_answers_amount(rightQuestionAmount);
         return statisticRepository.save(statistic);
     }
 
-    public User getUserByStatisticId(UUID statistic_id){
-        Long user_id = statisticRepository.getById(statistic_id).getUser_id();
-        return userRepository.getById(user_id);
+    public User getUserByStatisticId(Long statisticId) {
+        Long userId = statisticRepository.findById(statisticId).get().getUser_id();
+        return userRepository.getById(userId);
     }
 
-    public Test getTestByStatisticId(UUID statistic_id){
-        Long test_id = statisticRepository.getById(statistic_id).getTest_id();
-        return testRepository.getById(test_id);
+    public Test getTestByStatisticId(Long statisticId) {
+        Long testId = statisticRepository.findById(statisticId).get().getTest_id();
+        return testRepository.getById(testId);
     }
 }

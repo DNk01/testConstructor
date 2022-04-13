@@ -1,4 +1,4 @@
-package com.example.testconstructor.Answer;
+package com.example.testconstructor.Url;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,16 +13,16 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "answer")
-public class Answer {
+@Table(name = "url")
+public class Url {
     @Id
-    @Column(name = "answer_id")
-    Long answerId;
+    @Column(name = "url_id", nullable = false)
+    private Long urlId;
 
-    @Column(name = "question_id")
-    Long questionId;
+    @Column(name = "test_id")
+    Long testId;
 
-    @Column(name = "answer_name")
-    String answerName;
+    @Column(name = "user_id")
+    Long userId;
 
 }
