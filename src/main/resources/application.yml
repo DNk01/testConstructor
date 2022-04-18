@@ -1,6 +1,10 @@
 server:
   port: 8081
 
+java:
+  runtime:
+    version:11
+
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
