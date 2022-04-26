@@ -22,7 +22,7 @@ public class Url {
     @Column(name = "test_id")
     Long testId;
 
-    @Column(name = "user_id")
-    Long userId;
+    @Column(name = "url_name")
+    String urlName;
 
 }

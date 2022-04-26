@@ -17,10 +17,10 @@ import java.util.Set;
 public class Test {
     @Id
     @Column(name = "test_id")
-    Long id;
+    Long testId;
 
     @Column(name = "test_name")
-    String name;
+    String testName;
 
     @Column(name = "questions_amount")
     int questionsAmount;

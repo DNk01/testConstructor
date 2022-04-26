@@ -25,4 +25,7 @@ public class Answer {
     @Column(name = "answer_name")
     String answerName;
 
+    @Column(name = "is_correct_answer")
+    Boolean isCorrectAnswer;
+
 }

@@ -21,22 +21,22 @@ public class TestService {
         return testRepository.save(test);
     }
 
-    public Test findTestById(Long id) {
-        return testRepository.findById(id).get();
+    public Test findTestById(Long testId) {
+        return testRepository.findById(testId).get();
     }
 
-    public void deleteTestById(Long id) {
-        testRepository.deleteById(id);
+    public void deleteTestById(Long testId) {
+        testRepository.deleteById(testId);
     }
 
     public List<Test> findAllTests() {
         return testRepository.findAll();
     }
 
-    public Test updateTest(Long id, String name, int questionsAmount) {
+    public Test updateTest(Long testId, String testName, int questionsAmount) {
         Test test = new Test();
-        test.setId(id);
-        test.setName(name);
+        test.setTestId(testId);
+        test.setTestName(testName);
         test.setQuestionsAmount(questionsAmount);
         return testRepository.save(test);
     }

@@ -1,15 +1,7 @@
 package com.example.testconstructor.constructors;
 
-import com.example.testconstructor.Answer.Answer;
-import com.example.testconstructor.Answer.AnswerService;
-import com.example.testconstructor.Question.Question;
-import com.example.testconstructor.Question.QuestionService;
-import com.example.testconstructor.Statisctics.Statistic;
-import com.example.testconstructor.Statisctics.StatisticService;
 import com.example.testconstructor.Test.Test;
 import com.example.testconstructor.Test.TestService;
-import com.example.testconstructor.Users.User;
-import com.example.testconstructor.Users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

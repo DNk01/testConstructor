@@ -31,11 +31,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUser(Long id, String userName, String userSurname) {
+    public User updateUser(Long userId, String userName, Long testId, Integer rightQuestionAmount) {
         User user = new User();
-        user.setUserId(id);
+        user.setUserId(userId);
         user.setUserName(userName);
-        user.setUserSurname(userSurname);
+        user.setTestId(testId);
+        user.setRightQuestionAmount(rightQuestionAmount);
         return userRepository.save(user);
     }
 }

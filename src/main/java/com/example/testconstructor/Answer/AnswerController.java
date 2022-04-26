@@ -38,13 +38,13 @@ public class AnswerController {
     }
 
     @PutMapping("/{id}")
-    public Answer updateAnswer(@PathVariable("id") Long id, Long questionId, String answerName) {
-        return answerService.updateAnswer(id, questionId, answerName);
+    public Answer updateAnswer(@PathVariable("id") Long answerId, Long questionId, String answerName, Boolean isCorrectAnswer) {
+        return answerService.updateAnswer(answerId, questionId, answerName, isCorrectAnswer);
     }
 
     @GetMapping("{id}/test")
-    public Question getQuestionByAnswerId(@PathVariable("id") Long id) {
-        return answerService.getQuestionByAnswerId(id);
+    public Question getQuestionByAnswerId(@PathVariable("id") Long answerId) {
+        return answerService.getQuestionByAnswerId(answerId);
     }
 
 }

@@ -1,9 +1,5 @@
 package com.example.testconstructor.constructors;
 
-import com.example.testconstructor.Answer.AnswerService;
-import com.example.testconstructor.Question.QuestionService;
-import com.example.testconstructor.Statisctics.StatisticService;
-import com.example.testconstructor.Test.TestService;
 import com.example.testconstructor.Users.User;
 import com.example.testconstructor.Users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +16,8 @@ public class UserServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        User u1 = new User(1L, "Dmitry", "Litvinenko");
-        User u2 = new User(2l, "Danila", "Kolotilov");
+        User u1 = new User(1L, "Dmitry", 1L,6);
+        User u2 = new User(2l, "Danila", 2L,10);
 
         //createUser test
         assertThat(userService.createUser(u1)).isEqualTo(u1);
@@ -38,8 +34,7 @@ public class UserServiceTest {
         assertThat(userService.findAllUsers().size()).isEqualTo(1);
 
         //updateUser test
-        userService.updateUser(2L, "Vasya", "Pupkin");
+        userService.updateUser(2L, "Vasya", 1L,10);
         assertThat(userService.findUserById(2l).getUserName()).isEqualTo("Vasya");
-        assertThat(userService.findUserById(2L).getUserSurname()).isEqualTo("Pupkin");
     }
 }
