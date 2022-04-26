@@ -24,29 +24,24 @@ public class UrlService {
         return urlRepository.save(url);
     }
 
-    public Url findUrlById(Long id) {
-        return urlRepository.findById(id).get();
+    public Url findUrlById(Long urlId) {
+        return urlRepository.findById(urlId).get();
     }
 
-    public void deleteUrlById(Long id) {
-        urlRepository.deleteById(id);
+    public void deleteUrlById(Long urlId) {
+        urlRepository.deleteById(urlId);
     }
 
     public List<Url> findAllUrls() {
         return urlRepository.findAll();
     }
 
-    public Url updateUrl(Long id, Long userId, Long testId) {
+    public Url updateUrl(Long urlId, Long testId, String urlName) {
         Url url = new Url();
-        url.setUrlId(id);
+        url.setUrlId(urlId);
         url.setTestId(testId);
-        url.setUserId(userId);
+        url.setUrlName(urlName);
         return urlRepository.save(url);
-    }
-
-    public User getUserByUrlId(Long urlId) {
-        Long userId = urlRepository.getById(urlId).getUserId();
-        return userRepository.getById(userId);
     }
 
     public Test getTestByUrlId(Long urlId) {

@@ -4,31 +4,18 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="TestService-1" author="d.Kolotilov">
-        <createTable tableName="tests">
-            <column name="id" type="bigint">
+    <changeSet id="FinalChangeSet" author="VolfDaim">
+        <createTable tableName="test">
+            <column name="test_id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(50)">
+            <column name="test_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="questionsAmount" type="integer">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-    <changeSet id="TestService-2" author="VolfDaim">
-        <addColumn tableName="tests">
-            <column name="questionsAmount" type="integer"></column>
-        </addColumn>
-    </changeSet>
-    <changeSet id="UpdateTestService-2" author="VolfDaim">
-        <sql>
-            UPDATE tests
-            SET questionsAmount = 0;
-        </sql>
-        <rollback>
-            UPDATE tests SET questionsAmount = 0;
-        </rollback>
-    </changeSet>
-    <changeSet id="QuestionService-1" author="VolfDaim">
         <createTable tableName="question">
             <column name="question_id" type="bigint">
                 <constraints primaryKey="true"/>
@@ -40,8 +27,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-    <changeSet id="AnswerService-1" author="VolfDaim">
         <createTable tableName="answer">
             <column name="answer_id" type="bigint">
                 <constraints primaryKey="true"/>
@@ -52,9 +37,10 @@
             <column name="answer_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="is_correct_answer" type="boolean">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-    </changeSet>
-    <changeSet id="UrlService" author="VolfDaim">
         <createTable tableName="url">
             <column name="url_id" type="bigint">
                 <constraints primaryKey="true"/>
@@ -62,32 +48,32 @@
             <column name="test_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="user_id" type="bigint">
+            <column name="url_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-    <changeSet id="StatisticService-2" author="VolfDaim">
-        <modifyDataType tableName="statistic" columnName="statistic_id" newDataType="bigint"/>
-    </changeSet>
-    <changeSet id="foreignKeyTestQuestion" author="VolfDaim">
-        <addForeignKeyConstraint baseTableName="test" baseColumnNames="test_id"
-                                 constraintName="test_question_test_id_question_id"
+        <createTable tableName="user">
+            <column name="user_id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="test_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="right_question_amount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="test" baseColumnNames="test_id" constraintName="fk_test_question_id"
                                  referencedTableName="question"
-                                 referencedColumnNames="question_id"
+                                 referencedColumnNames="test_id"
                                  onUpdate="CASCADE"/>
-    </changeSet>
-    <changeSet id="foreignKeyQuestionAnswer" author="VolfDaim">
         <addForeignKeyConstraint baseTableName="question" baseColumnNames="question_id"
-                                 constraintName="question_answer_question_id_answer_id"
+                                 constraintName="fk_question_answer_id"
                                  referencedTableName="answer"
-                                 referencedColumnNames="answer_id"
-                                 onUpdate="CASCADE"/>
-    </changeSet>
-    <changeSet id="foreignKeyUserStatistic" author="VolfDaim">
-        <addForeignKeyConstraint baseTableName="user" baseColumnNames="user_id"
-                                 constraintName="user_statistic_user_id_statistic_id" referencedTableName="statistic"
-                                 referencedColumnNames="statistic_id"
+                                 referencedColumnNames="question_id"
                                  onUpdate="CASCADE"/>
     </changeSet>
 </databaseChangeLog>

@@ -22,6 +22,9 @@ public class User {
     @Column(name = "user_name")
     String userName;
 
-    @Column(name = "user_surname")
-    String userSurname;
+    @Column(name = "test_id")
+    Long testId;
+
+    @Column(name = "right_question_amount")
+    Integer rightQuestionAmount;
 }

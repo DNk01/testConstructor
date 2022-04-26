@@ -2,10 +2,6 @@ package com.example.testconstructor.constructors;
 
 import com.example.testconstructor.Answer.Answer;
 import com.example.testconstructor.Answer.AnswerService;
-import com.example.testconstructor.Question.QuestionService;
-import com.example.testconstructor.Statisctics.StatisticService;
-import com.example.testconstructor.Test.TestService;
-import com.example.testconstructor.Users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,9 +14,9 @@ public class AnswerServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        Answer a1 = new Answer(1L, 1L, "a1");
-        Answer a2 = new Answer(2L, 2L, "a2");
-        Answer a3 = new Answer(3L, 3L, "a3");
+        Answer a1 = new Answer(1L, 1L, "a1", Boolean.TRUE);
+        Answer a2 = new Answer(2L, 2L, "a2", Boolean.TRUE);
+        Answer a3 = new Answer(3L, 3L, "a3", Boolean.TRUE);
 
         //createAnswer test
         assertThat(answerService.createAnswer(a1)).isEqualTo(a1);
@@ -38,7 +34,7 @@ public class AnswerServiceTest {
         assertThat(answerService.findAllAnswers().size()).isEqualTo(2);
 
         //updateAnswer test
-        answerService.updateAnswer(2L, 2L, "new_a2");
+        answerService.updateAnswer(2L, 2L, "new_a2", Boolean.TRUE);
         assertThat(answerService.findAnswerById(2l).getAnswerName()).isEqualTo("new_a2");
 
         //getTestByQuestionId test

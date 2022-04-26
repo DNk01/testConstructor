@@ -25,13 +25,13 @@ public class UrlController {
     }
 
     @GetMapping("{id}")
-    ResponseEntity<Url> findUrl(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(urlService.findUrlById(id));
+    ResponseEntity<Url> findUrl(@PathVariable("id") Long urlId) {
+        return ResponseEntity.ok(urlService.findUrlById(urlId));
     }
 
     @DeleteMapping("{id}")
-    public void deleteUrl(@PathVariable("id") Long id) {
-        urlService.deleteUrlById(id);
+    public void deleteUrl(@PathVariable("id") Long urlId) {
+        urlService.deleteUrlById(urlId);
     }
 
     @GetMapping
@@ -40,18 +40,14 @@ public class UrlController {
     }
 
     @PutMapping("/{id}")
-    public Url updateUrl(@PathVariable("id") Long urlId, Long testId, Long userId) {
-        return urlService.updateUrl(urlId, testId, userId);
+    public Url updateUrl(@PathVariable("id") Long urlId, Long testId, String urlName) {
+        return urlService.updateUrl(urlId, testId, urlName);
     }
 
-    @GetMapping("{id}/user")
-    public User getUserByUrlId(@PathVariable("id") Long id) {
-        return urlService.getUserByUrlId(id);
-    }
 
     @GetMapping("{id}/test")
-    public Test getTestByUrlId(@PathVariable("id") Long id) {
-        return urlService.getTestByUrlId(id);
+    public Test getTestByUrlId(@PathVariable("id") Long urlId) {
+        return urlService.getTestByUrlId(urlId);
     }
 
 }

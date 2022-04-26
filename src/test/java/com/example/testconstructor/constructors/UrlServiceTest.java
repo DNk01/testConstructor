@@ -1,14 +1,7 @@
 package com.example.testconstructor.constructors;
 
-import com.example.testconstructor.Answer.AnswerService;
-import com.example.testconstructor.Question.QuestionService;
-import com.example.testconstructor.Statisctics.StatisticService;
-import com.example.testconstructor.Test.Test;
-import com.example.testconstructor.Test.TestService;
 import com.example.testconstructor.Url.Url;
 import com.example.testconstructor.Url.UrlService;
-import com.example.testconstructor.Users.User;
-import com.example.testconstructor.Users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,8 +15,8 @@ public class UrlServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        Url url1 = new Url(1L, 1L, 1L);
-        Url url2 = new Url(2L, 1L, 2L);
+        Url url1 = new Url(1L, 1L, "url1");
+        Url url2 = new Url(2L, 1L, "url2");
 
         //createUrl test
         assertThat(urlService.createUrl(url1)).isEqualTo(url1);
@@ -40,7 +33,7 @@ public class UrlServiceTest {
         assertThat(urlService.findAllUrls().size()).isEqualTo(1);
 
         //updateUrl test
-        urlService.updateUrl(2L, 2L, 2L);
+        urlService.updateUrl(2L, 2L, "url1");
         assertThat(urlService.findUrlById(2l).getTestId()).isEqualTo(2L);
 
 

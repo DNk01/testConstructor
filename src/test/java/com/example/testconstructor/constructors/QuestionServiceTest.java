@@ -1,11 +1,7 @@
 package com.example.testconstructor.constructors;
 
-import com.example.testconstructor.Answer.AnswerService;
 import com.example.testconstructor.Question.Question;
 import com.example.testconstructor.Question.QuestionService;
-import com.example.testconstructor.Statisctics.StatisticService;
-import com.example.testconstructor.Test.TestService;
-import com.example.testconstructor.Users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -42,7 +38,5 @@ public class QuestionServiceTest {
         questionService.updateQuestion(2L, 3L, "new_q2");
         assertThat(questionService.findQuestionById(2l).getQuestionName()).isEqualTo("new_q2");
 
-        //getTestByQuestionId test
-        assertThat(questionService.getTestByQuestionId(2L).getId()).isEqualTo(3L);
     }
     }
