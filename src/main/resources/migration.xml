@@ -12,7 +12,7 @@
             <column name="test_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="questionsAmount" type="integer">
+            <column name="questions_amount" type="integer">
                 <constraints nullable="false"/>
             </column>
         </createTable>
