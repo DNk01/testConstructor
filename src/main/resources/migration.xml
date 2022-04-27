@@ -66,14 +66,5 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseTableName="test" baseColumnNames="test_id" constraintName="fk_test_question_id"
-                                 referencedTableName="question"
-                                 referencedColumnNames="test_id"
-                                 onUpdate="CASCADE"/>
-        <addForeignKeyConstraint baseTableName="question" baseColumnNames="question_id"
-                                 constraintName="fk_question_answer_id"
-                                 referencedTableName="answer"
-                                 referencedColumnNames="question_id"
-                                 onUpdate="CASCADE"/>
     </changeSet>
 </databaseChangeLog>
