@@ -15,7 +15,7 @@ public class UrlServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        Url url1 = new Url(1L, 1L, "http://constructorfortests.heroku.com/url1");
+        Url url1 = new Url(1L, 1L, "https://constructorfortests.herokuapp.com/url1");
         Url url2 = new Url(2L, 1L, "url2");
 
         //createUrl test
