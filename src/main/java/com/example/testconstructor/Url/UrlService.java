@@ -18,7 +18,7 @@ public class UrlService {
     }
 
     private String generateUrl(Long testId){
-        return "http://constructorfortests.heroku.com/" + testId;
+        return "https://constructorfortests.herokuapp.com" + testId;
     }
 
 }
