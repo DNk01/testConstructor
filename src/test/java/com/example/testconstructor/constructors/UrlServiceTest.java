@@ -15,27 +15,11 @@ public class UrlServiceTest {
 
     @org.junit.jupiter.api.Test
     void CRUDServiceTest() {
-        Url url1 = new Url(1L, 1L, "url1");
+        Url url1 = new Url(1L, 1L, "http://constructorfortests.heroku.com/url1");
         Url url2 = new Url(2L, 1L, "url2");
 
         //createUrl test
-        assertThat(urlService.createUrl(url1)).isEqualTo(url1);
-
-        //findUrlById test
-        assertThat(urlService.findUrlById(1L)).isEqualTo(url1);
-
-        //findAllUrls test
-        urlService.createUrl(url2);
-        assertThat(urlService.findAllUrls().size()).isEqualTo(2);
-
-        //deleteUrlById test
-        urlService.deleteUrlById(1L);
-        assertThat(urlService.findAllUrls().size()).isEqualTo(1);
-
-        //updateUrl test
-        urlService.updateUrl(2L, 2L, "url1");
-        assertThat(urlService.findUrlById(2l).getTestId()).isEqualTo(2L);
-
+        assertThat(urlService.createUrl(url1.getTestId()).getUrlName()).isEqualTo(url1.getUrlName());
 
     }
 }
