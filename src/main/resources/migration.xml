@@ -67,4 +67,7 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="FinalChangeSet" author="Dnk01">
+        <dropColumn tableName="test" columnName="questions_amount"/>
+    </changeSet>
 </databaseChangeLog>

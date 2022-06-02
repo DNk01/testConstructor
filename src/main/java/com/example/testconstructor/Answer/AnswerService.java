@@ -3,26 +3,39 @@ package com.example.testconstructor.Answer;
 
 import com.example.testconstructor.Question.Question;
 import com.example.testconstructor.Question.QuestionRepository;
+import com.example.testconstructor.TestConstructorResponse.AnswerResponse;
+import com.example.testconstructor.TestConstructorResponse.QuestionResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class AnswerService {
     private final AnswerRepository answerRepository;
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
+    Random random = new Random();
 
     public AnswerService(AnswerRepository answerRepository, QuestionRepository questionRepository) {
         this.answerRepository = answerRepository;
         this.questionRepository = questionRepository;
     }
 
-    public Answer createAnswer(Answer question) {
-        return answerRepository.save(question);
+    public void createAnswerList(List<QuestionResponse> questionResponses, Long testId) {
+        for (QuestionResponse questionRespons : questionResponses) {
+            for (int y = 0; y < questionRespons.answerResponse.size(); y++) {
+                createAnswer(questionRespons.answerResponse.get(y), testId);
+            }
+
+        }
     }
 
-    public Answer findAnswerById(Long answerId) {
-        return answerRepository.findById(answerId).get();
+    public void createAnswer(AnswerResponse answerResponse, Long testId) {
+        answerRepository.save(new Answer(random.nextLong(), testId, answerResponse.answerName, answerResponse.isRightAnswer));
+    }
+
+    public List<Answer> findAnswerById(Long answerId) {
+        return answerRepository.findById(answerId).stream().toList();
     }
 
     public void deleteAnswerById(Long answerId) {

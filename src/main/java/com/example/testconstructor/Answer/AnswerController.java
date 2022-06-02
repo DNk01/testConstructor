@@ -17,16 +17,6 @@ public class AnswerController {
         this.answerService = answerService;
     }
 
-    @PostMapping
-    public Answer createAnswer(@RequestBody Answer answer) {
-        return answerService.createAnswer(answer);
-    }
-
-    @GetMapping("{id}")
-    ResponseEntity<Answer> findAnswer(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(answerService.findAnswerById(id));
-    }
-
     @DeleteMapping("{id}")
     public void deleteAnswer(@PathVariable("id") Long id) {
         answerService.deleteAnswerById(id);

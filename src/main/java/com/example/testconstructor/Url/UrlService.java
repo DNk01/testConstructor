@@ -12,13 +12,19 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-    public Url createUrl(Long testId) {
-        return urlRepository.save
-            (new Url(UUID.randomUUID().getMostSignificantBits(), testId, generateUrl(testId)));
+
+
+    public String generateUrl(Long testId){
+        return "https://constructorfortests.herokuapp.com/" + testId;
     }
 
-    private String generateUrl(Long testId){
-        return "https://constructorfortests.herokuapp.com" + testId;
+    public Long parseUrl(String url){
+        for(int i = 0; i < url.length(); i++){
+            if(url.charAt(i) > '0' && url.charAt(i) <='9'){
+                return Long.valueOf(url.substring(i));
+            }
+        }
+        return null;
     }
 
 }

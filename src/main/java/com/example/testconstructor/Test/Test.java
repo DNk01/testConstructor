@@ -21,8 +21,4 @@ public class Test {
 
     @Column(name = "test_name")
     String testName;
-
-    @Column(name = "questions_amount")
-    int questionsAmount;
-
 }

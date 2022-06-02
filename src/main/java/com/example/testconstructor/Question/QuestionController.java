@@ -18,34 +18,4 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @PostMapping
-    public Question createQuestion(@RequestBody Question question) {
-        return questionService.createQuestion(question);
-    }
-
-    @GetMapping("{id}")
-    ResponseEntity<Question> findQuestion(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(questionService.findQuestionById(id));
-    }
-
-    @DeleteMapping("{id}")
-    public void deleteQuestion(@PathVariable("id") Long id) {
-        questionService.deleteQuestionById(id);
-    }
-
-    @GetMapping
-    List<Question> getAllQuestions() {
-        return questionService.findAllQuestions();
-    }
-
-    @PutMapping("/{id}")
-    public Question updateQuestion(@PathVariable("id") Long id, Long testId, String questionName) {
-        return questionService.updateQuestion(id, testId, questionName);
-    }
-
-    @GetMapping("{id}/test")
-    public Test getTestByQuestionId(@PathVariable("id") Long id) {
-        return questionService.getTestByQuestionId(id);
-    }
-
 }
