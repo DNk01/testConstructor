@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class AnswerService {
@@ -32,10 +33,6 @@ public class AnswerService {
 
     public void createAnswer(AnswerResponse answerResponse, Long testId) {
         answerRepository.save(new Answer(random.nextLong(), testId, answerResponse.answerName, answerResponse.isRightAnswer));
-    }
-
-    public List<Answer> findAnswerById(Long answerId) {
-        return answerRepository.findById(answerId).stream().toList();
     }
 
     public void deleteAnswerById(Long answerId) {
