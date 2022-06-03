@@ -44,7 +44,7 @@ public class TestService {
                 }
                 else{
                     questionsShowerResponses.add(new QuestionsRequest(questionName, answersShowerResponses));
-                    answersShowerResponses.clear();
+                    answersShowerResponses = new ArrayList<>();
                     answersShowerResponses.add(
                             new AnswersRequest((String) objects.get(i)[2], (Boolean) objects.get(i)[3])
                     );
