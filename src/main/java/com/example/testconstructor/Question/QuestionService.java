@@ -41,9 +41,10 @@ public class QuestionService {
 		for (int i = 0; i < testResponse.questions.size(); i++) {
 			for (int y = 0; y < testResponse.questions.get(i).answers.size(); y++) {
 				if (testResponse.questions.get(i).answers.get(y).isRightAnswer
-					!= correctTestResponse.questions.get(i).answers.get(y).isRightAnswer)
+					!= correctTestResponse.questions.get(i).answers.get(y).isRightAnswer){
 					countFalseAnswers++;
-				break;
+					break;
+				}
 			}
 		}
 		return "Вы правильно ответили на " + (testResponse.questions.size() - countFalseAnswers) + " вопросов из " + testResponse.questions.size();
