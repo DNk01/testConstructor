@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/passageTest")
+@RequestMapping("/api/passageTest")
 public class TestRequestController {
 
 	private final TestService testService;

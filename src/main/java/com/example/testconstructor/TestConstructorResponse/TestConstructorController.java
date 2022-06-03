@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/createTest")
+@RequestMapping("/api/createTest")
 public class TestConstructorController {
 
 	private final TestService testService;
@@ -24,7 +24,7 @@ public class TestConstructorController {
 		this.urlService = urlService;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping("")
 	public String createTest(@RequestBody TestRequest testRequest) {
 		Long testId = testService.createTest(testRequest.testName);
 		questionService.createQuestionList(testRequest.questions, testId);
