@@ -28,6 +28,6 @@ public class TestConstructorController {
 	public String createTest(@RequestBody TestRequest testRequest) {
 		Long testId = testService.createTest(testRequest.testName);
 		questionService.createQuestionList(testRequest.questions, testId);
-		return urlService.generateUrl(testId);
+		return testId.toString();
 	}
 }
