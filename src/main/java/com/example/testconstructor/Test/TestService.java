@@ -3,6 +3,7 @@ package com.example.testconstructor.Test;
 import com.example.testconstructor.TestShowerResponse.AnswersRequest;
 import com.example.testconstructor.TestShowerResponse.QuestionsRequest;
 import com.example.testconstructor.TestShowerResponse.TestRequest;
+import com.example.testconstructor.TestShowerResponse.TestSqlRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,29 +31,29 @@ public class TestService {
     }
 
     public TestRequest showTest(Test test){
-        List<Object[]> objects = testRepository.showTest(test.getTestId());
+        List<TestSqlRequest> objects = testRepository.showTest(test.getTestId());
         List<QuestionsRequest> questionsShowerResponses = new ArrayList<>();
         List<AnswersRequest> answersShowerResponses = new ArrayList<>();
 
         if(!objects.isEmpty()) {
-            String questionName = (String) objects.get(0)[1];
+            String questionName = (String) objects.get(0).questionName;
             for (int i = 0; i < objects.size(); i++) {
-                if (Objects.equals((String) objects.get(i)[1], questionName)) {
+                if (Objects.equals((String) objects.get(i).questionName, questionName)) {
                     answersShowerResponses.add(
-                            new AnswersRequest((String) objects.get(i)[2], (Boolean) objects.get(i)[3])
+                            new AnswersRequest((String) objects.get(i).answerName, (Boolean) objects.get(i).isCorrectAnswer)
                     );
                 }
                 else{
                     questionsShowerResponses.add(new QuestionsRequest(questionName, answersShowerResponses));
-                    answersShowerResponses.clear();
+                    answersShowerResponses = new ArrayList<AnswersRequest>();
                     answersShowerResponses.add(
-                            new AnswersRequest((String) objects.get(i)[2], (Boolean) objects.get(i)[3])
+                            new AnswersRequest((String) objects.get(i).answerName, (Boolean) objects.get(i).isCorrectAnswer)
                     );
-                    questionName = (String) objects.get(i)[1];
+                    questionName = (String) objects.get(i).questionName;
                 }
             }
             questionsShowerResponses.add(new QuestionsRequest(questionName, answersShowerResponses));
-            return new TestRequest((String) objects.get(0)[0], questionsShowerResponses);
+            return new TestRequest((String) objects.get(0).testName, questionsShowerResponses);
         }
         return new TestRequest();
     }
