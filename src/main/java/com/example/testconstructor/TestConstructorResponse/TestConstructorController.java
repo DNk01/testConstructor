@@ -2,6 +2,7 @@ package com.example.testconstructor.TestConstructorResponse;
 
 import com.example.testconstructor.Question.QuestionService;
 import com.example.testconstructor.Test.TestService;
+import com.example.testconstructor.TestShowerResponse.TestRequest;
 import com.example.testconstructor.Url.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,9 @@ public class TestConstructorController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String createTest(@RequestBody TestConstructorResponse testConstructorResponse) {
-		Long testId = testService.createTest(testConstructorResponse.testName);
-		questionService.createQuestionList(testConstructorResponse.questions, testId);
+	public String createTest(@RequestBody TestRequest testRequest) {
+		Long testId = testService.createTest(testRequest.testName);
+		questionService.createQuestionList(testRequest.questions, testId);
 		return urlService.generateUrl(testId);
 	}
 }
