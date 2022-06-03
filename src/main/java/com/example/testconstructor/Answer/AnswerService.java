@@ -22,39 +22,15 @@ public class AnswerService {
         this.questionRepository = questionRepository;
     }
 
-    public void createAnswerList(List<QuestionResponse> questionResponses, Long testId) {
-        for (QuestionResponse questionRespons : questionResponses) {
-            for (int y = 0; y < questionRespons.answerResponse.size(); y++) {
-                createAnswer(questionRespons.answerResponse.get(y), testId);
+    public void createAnswerList(QuestionResponse questionResponses, Long questionId) {
+            for (int y = 0; y < questionResponses.answerResponse.size(); y++) {
+                createAnswer(questionResponses.answerResponse.get(y), questionId);
             }
 
-        }
     }
 
-    public void createAnswer(AnswerResponse answerResponse, Long testId) {
-        answerRepository.save(new Answer(random.nextLong(), testId, answerResponse.answerName, answerResponse.isRightAnswer));
+    public void createAnswer(AnswerResponse answerResponse, Long questionId) {
+        answerRepository.save(new Answer(random.nextLong(), questionId, answerResponse.answerName, answerResponse.isRightAnswer));
     }
 
-    public void deleteAnswerById(Long answerId) {
-        answerRepository.deleteById(answerId);
-    }
-
-    public List<Answer> findAllAnswers() {
-        return answerRepository.findAll();
-    }
-
-    public Answer updateAnswer(Long answerId, Long questionId, String answerName, Boolean isCorrectAnswer) {
-        Answer answer = new Answer();
-        answer.setAnswerId(answerId);
-        answer.setQuestionId(questionId);
-        answer.setAnswerName(answerName);
-        answer.setIsCorrectAnswer(isCorrectAnswer);
-        return answerRepository.save(answer);
-    }
-
-    public Question getQuestionByAnswerId(Long answerId) {
-
-        Long question_id = answerRepository.findById(answerId).get().getQuestionId();
-        return questionRepository.getById(question_id);
-    }
 }
