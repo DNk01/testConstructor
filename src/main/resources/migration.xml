@@ -70,4 +70,9 @@
     <changeSet id="FinalChangeSet" author="Dnk01">
         <dropColumn tableName="test" columnName="questions_amount"/>
     </changeSet>
+    <changeSet id="changeLengthWords" author="Dnk01">
+        <modifyDataType tableName="test" columnName="test_name" newDataType="varchar(10000)"/>
+        <modifyDataType tableName="question" columnName="question_name" newDataType="varchar(1000)"/>
+    </changeSet>
+
 </databaseChangeLog>
