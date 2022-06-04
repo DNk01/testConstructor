@@ -12,12 +12,6 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-
-
-    public String generateUrl(Long testId){
-        return "https://constructorfortests.herokuapp.com/" + testId;
-    }
-
     public Long parseUrl(String url){
         for(int i = 0; i < url.length(); i++){
             if(url.charAt(i) > '0' && url.charAt(i) <='9'){

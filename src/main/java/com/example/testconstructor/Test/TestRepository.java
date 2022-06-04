@@ -12,5 +12,10 @@ public interface TestRepository extends JpaRepository<Test, Long> {
             "left join Answer a on q.questionId=a.questionId\n" +
             "where t.testId=?1")
     List<TestSqlRequest> showTest(Long test_id);
+
+    @Query(value = "select q.questionId from Test t\n" +
+        "left join Question q on t.testId=q.testId\n" +
+        "where t.testId=?1")
+    List<Long> findAllQuestions(Long test_id);
 }
 

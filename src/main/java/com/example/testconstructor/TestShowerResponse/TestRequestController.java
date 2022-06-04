@@ -3,7 +3,6 @@ package com.example.testconstructor.TestShowerResponse;
 
 import com.example.testconstructor.Question.QuestionService;
 import com.example.testconstructor.Test.Test;
-import com.example.testconstructor.Test.TestRepository;
 import com.example.testconstructor.Test.TestService;
 import com.example.testconstructor.Url.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +38,7 @@ public class TestRequestController {
 	public String finishTest(HttpServletResponse response, @PathVariable("url") String url,
 							 @RequestBody TestRequest testRequest) {
 		changeCorsPolicy(response);
-		Test test = testService.findTestById(urlService.parseUrl(url));
-		return questionService.checkTest(test, testRequest);
+		return questionService.checkTest(testRequest, url);
 	}
 
 	private void changeCorsPolicy(HttpServletResponse response) {
