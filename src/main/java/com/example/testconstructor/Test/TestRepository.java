@@ -13,3 +13,4 @@ public interface TestRepository extends JpaRepository<Test, Long> {
             "where t.testId=?1")
     List<TestSqlRequest> showTest(Long test_id);
 }
+
