@@ -96,6 +96,6 @@ public class QuestionService {
 		total = "Итого: Вы правильно ответили на " +
 			(testResponse.questions.size() - countFalseAnswers) +
 			" вопросов из " + testResponse.questions.size();
-		return questions + "\n" + total ;
+		return /*questions + "\n" + */total ;
 	}
 }
