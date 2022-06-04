@@ -45,7 +45,11 @@ public class TestService {
                 }
                 else{
                     questionsShowerResponses.add(new QuestionsRequest(questionName, answersShowerResponses));
+
                     answersShowerResponses = new ArrayList<AnswersRequest>();
+
+                    answersShowerResponses = new ArrayList<>();
+
                     answersShowerResponses.add(
                             new AnswersRequest((String) objects.get(i).answerName, (Boolean) objects.get(i).isCorrectAnswer)
                     );

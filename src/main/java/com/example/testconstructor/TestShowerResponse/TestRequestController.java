@@ -12,42 +12,40 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/passageTest")
+@RequestMapping("/api/passageTest")
 public class TestRequestController {
 
-    private final TestService testService;
-    private final QuestionService questionService;
-    private final UrlService urlService;
-    private final TestRepository testRepository;
+	private final TestService testService;
+	private final QuestionService questionService;
+	private final UrlService urlService;
 
-    @Autowired
-    public TestRequestController(TestService testService,
-                                 QuestionService questionService,
-                                 UrlService urlService, TestRepository testRepository) {
-        this.testService = testService;
-        this.questionService = questionService;
-        this.urlService = urlService;
-        this.testRepository = testRepository;
-    }
+	@Autowired
+	public TestRequestController(TestService testService,
+								 QuestionService questionService,
+								 UrlService urlService) {
+		this.testService = testService;
+		this.questionService = questionService;
+		this.urlService = urlService;
+	}
 
-    @GetMapping("{url}")
-    public TestRequest showTest(HttpServletResponse response, @PathVariable("url") String url) {
-        changeCorsPolicy(response);
+	@GetMapping("{url}")
+	public TestRequest showTest(HttpServletResponse response, @PathVariable("url") String url) {
+		changeCorsPolicy(response);
 		Test test = testService.findTestById(urlService.parseUrl(url));
 		return testService.showTest(test);
-    }
+	}
 
 	@PostMapping("{url}")
 	public String finishTest(HttpServletResponse response, @PathVariable("url") String url,
-							 @RequestBody TestRequest testResponse) {
-        changeCorsPolicy(response);
+							 @RequestBody TestRequest testRequest) {
+		changeCorsPolicy(response);
 		Test test = testService.findTestById(urlService.parseUrl(url));
-		return questionService.checkTest(test, testResponse);
+		return questionService.checkTest(test, testRequest);
 	}
 
-    private void changeCorsPolicy(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    }
+	private void changeCorsPolicy(HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	}
 
 }
