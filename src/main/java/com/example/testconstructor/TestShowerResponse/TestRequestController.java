@@ -30,8 +30,7 @@ public class TestRequestController {
 	@GetMapping("{url}")
 	public TestRequest showTest(HttpServletResponse response, @PathVariable("url") String url) {
 		changeCorsPolicy(response);
-		Test test = testService.findTestById(urlService.parseUrl(url));
-		return testService.showTest(test);
+		return testService.showTest(url);
 	}
 
 	@PostMapping("{url}")

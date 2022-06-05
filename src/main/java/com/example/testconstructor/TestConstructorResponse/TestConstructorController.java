@@ -12,22 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class TestConstructorController {
 
 	private final TestService testService;
-	private final QuestionService questionService;
-	private final UrlService urlService;
 
 	@Autowired
-	public TestConstructorController(TestService testService,
-									 QuestionService questionService,
-									 UrlService urlService) {
+	public TestConstructorController(TestService testService) {
 		this.testService = testService;
-		this.questionService = questionService;
-		this.urlService = urlService;
 	}
 
 	@PostMapping("")
 	public String createTest(@RequestBody TestRequest testRequest) {
-		Long testId = testService.createTest(testRequest.testName);
-		questionService.createQuestionList(testRequest.questions, testId);
-		return testId.toString();
+		return testService.createTest(testRequest).toString();
 	}
 }
