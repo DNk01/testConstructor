@@ -93,9 +93,9 @@ public class QuestionService {
 			}
 			flag = false;
 		}
-		total = "Итого: Вы правильно ответили на " +
+		total = /*questions +*/ "\nИтого: Вы правильно ответили на " +
 			(testResponse.questions.size() - countFalseAnswers) +
 			" вопросов из " + testResponse.questions.size();
-		return /*questions + "\n" + */total ;
+		return total ;
 	}
 }
